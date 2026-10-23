@@ -1,0 +1,42 @@
+[package]
+name = "axiom-query-rs"
+description = "Specification-based query and aggregation engine for SeaORM: JSON domain filters, relational paths and read_group aggregation"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation = "https://docs.rs/axiom-query-rs"
+readme = "README.md"
+keywords = ["sea-orm", "query", "filter", "aggregation", "specification"]
+categories = ["database"]
+include = ["src/**/*.rs", "tests/**/*.rs", "examples/**/*.rs", "README.md", "LICENSE-*"]
+
+[dependencies]
+chrono = { version = "0.4.40", default-features = false, features = ["std"] }
+futures-util = { version = "0.3.31", default-features = false }
+sea-orm = { version = "2.0.4", default-features = false, features = [
+    "with-json",
+    "with-chrono",
+    "with-rust_decimal",
+    "with-uuid",
+    "stream",
+] }
+serde = { version = "1.0.200", features = ["derive"] }
+serde_json = "1.0.120"
+thiserror = "2"
+
+[dev-dependencies]
+futures-util = "0.3.31"
+sea-orm = { version = "2.0.4", default-features = false, features = [
+    "macros",
+    "sqlx-sqlite",
+    "sqlx-postgres",
+    "runtime-tokio",
+] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[lints]
+workspace = true

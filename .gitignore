@@ -1,0 +1,13 @@
+# Build output
+/target
+
+# Editors and OS
+.idea/
+.vscode/
+*.code-workspace
+*.swp
+.DS_Store
+
+# Local environment (database URLs, tokens)
+.env
+.env.*

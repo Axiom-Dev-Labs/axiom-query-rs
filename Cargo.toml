@@ -1,0 +1,18 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.94"
+authors = ["Parth Joshi <parthjoshi90@gmail.com>"]
+repository = "https://github.com/Axiom-Dev-Labs/axiom-query-rs"
+homepage = "https://github.com/Axiom-Dev-Labs/axiom-query-rs"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
