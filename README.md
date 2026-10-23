@@ -319,6 +319,26 @@ AXIOM_TEST_DATABASE_URL='postgres://USER@%2Fvar%2Frun%2Fpostgresql/axiom_query_t
 
 Each test creates its own schema, `aq_<test file>_<n>`, recreated on every run.
 
+CI (`.github/workflows/ci.yml`) runs formatting, clippy, docs, the test suite on SQLite and PostgreSQL 16, an MSRV check and a package dry run on every push to `main` and every pull request.
+
+### Releasing
+
+Publishing a GitHub release publishes the crate to crates.io (`.github/workflows/release.yml`). The workflow:
+
+1. checks that the release tag matches the crate version,
+2. re-runs CI,
+3. runs `cargo publish`.
+
+```bash
+# bump `version` in Cargo.toml ([workspace.package]), then:
+cargo check                      # refresh Cargo.lock
+git commit -am "Release 0.2.0"
+git push origin main
+gh release create v0.2.0 --generate-notes   # or GitHub → Releases → Draft a new release
+```
+
+One-time setup: create a crates.io API token with the `publish-new` and `publish-update` scopes, and add it as the `CARGO_REGISTRY_TOKEN` secret of the repository's `crates-io` environment (Settings → Environments).
+
 ---
 
 ## Acknowledgements
